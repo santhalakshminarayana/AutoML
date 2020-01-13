@@ -1,0 +1,25 @@
+.card-body
+{
+  background-color: #00293C;
+}
+
+.card-title
+{
+  color: #1E656D;
+}
+
+.card-text
+{
+  color: #F1F3CE;
+}
+
+a:link, a:visited
+{
+  text-decoration: none;
+  color: #FDFFFF;
+}
+
+a:hover
+{
+  color: #D0E1F9;
+}
