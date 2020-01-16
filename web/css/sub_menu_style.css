@@ -1,0 +1,80 @@
+.name
+{
+    color: #262F34;
+    text-decoration: underline;
+    text-decoration-color: #F35A4A;
+    text-align: center;
+}
+
+.heading
+{
+    font-size: 2.7rem;
+    font-family: 'Actor', sans-serif;
+    font-weight: bold;
+    color: #78A5A3;
+    margin-top: 1%;
+}
+
+label
+{
+    font-size: 1.9rem;
+    color: #CE5A57;
+    font-family: 'Noto Sans SC', sans-serif;
+    width: 20%;
+}
+
+.description
+{
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #262F34;
+}
+
+.parameters
+{
+    color: #739F3D;
+    font-style: italic;
+    font-size: 1.7rem;
+}
+
+.input_text
+{
+    margin-left: 2%;
+    padding: 1%;
+    outline: none;
+    border:none;
+    font-size: 1.6rem;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: bold;
+    border-bottom: 2px solid #E1B16A;    
+    color: #444C5C;
+    width: 30%;
+}
+
+.parameter_box
+{
+    padding: 1%;
+    border: 1px solid rgb(91, 192, 222);
+    color: rgb(91, 192, 222);
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #262F34;
+  border: none;
+  color: #F35A4A;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1.5rem;
+  width: 10%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5%;
+  float: right;
+}
+
+.button:hover{
+  padding-right: 3%;
+}
