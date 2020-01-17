@@ -21,7 +21,7 @@
 </head>
 
 <body class = 'container'>
-    <h1 class = 'name'>Support Vector Regressor</h1>
+    <h1 class = 'name'>Support Vector Classifier</h1>
     <form onsubmit = "return false"> 
         <p class = 'heading'>Datasets full path</p>
         <hr>
@@ -58,18 +58,12 @@
             <br>
             <input type="text" value= '1.0' id = 'C' placeholder='positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
             <br><br>
-            <!-- epsilon -->
-            <label>Epsilon :</label>
-            <span class = 'description'><span class = 'parameters'>(float) </span>margin of tolerance where no penalty is given to errors</span>
-            <br>
-            <input type="text" value= '0.1' id = 'epsilon' placeholder = 'positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
-            <br><br>
 
             <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
     </form>
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
-    <script type="text/javascript" src = '../script/svr.js'></script>
+    <script type="text/javascript" src = '../script/svm.js'></script>
     <script type="text/javascript">
        
        // change color of parameter box

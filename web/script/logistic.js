@@ -23,10 +23,10 @@ $(document).ready(function(){
 	}
 
 	$('#next_button').on('click',function(){
-		var n_neighbors = get_parameters_text('n_neighbors', '5');
-		var p = get_parameters_text('p', '2');
+		var penalty = get_parameters_box('penalty', 'l2');
+		var C = get_parameters_text('C', '1.0')
 		
-		alert(n_neighbors);
-		alert(p);
+		alert(penalty);
+		alert(C);
 	});
 });

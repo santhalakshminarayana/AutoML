@@ -21,7 +21,7 @@
 </head>
 
 <body class = 'container'>
-    <h1 class = 'name'>K - Nearest Neighbors</h1>
+    <h1 class = 'name'>Logistic Regression</h1>
     <form onsubmit = "return false"> 
         <p class = 'heading'>Datasets full path</p>
         <hr>
@@ -38,23 +38,43 @@
 
             <p class = 'heading'>Parameters</p>
             <hr>
-            <!-- K value -->
-            <label>K-neighbors :</label>
-            <span class = 'description'><span class = 'parameters'>(int) </span>number of nearest neighbors</span>
-            <br>
-            <input type="text" value= '5' id = 'n_neighbors' placeholder="positive number > 0" class = 'form-control' data-role = 'tagsinput' />
+            <!-- Penalty -->
+            <label>Penalty :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>norm used in penalization</span>
             <br><br>
-            <!-- Distance Metric -->
-            <label>Distance norm (p) :</label>
-            <span class = 'description'><span class = 'parameters'>(int) </span>Minkowaski parameter, when p = 1 equivalent to Manhattan, p = 2 equivalent to Euclidean</span>
+            <span class = 'parameter_box' name = 'penalty' >l1</span>
+            <span class = 'parameter_box' name = 'penalty' style = 'background-color: rgb(91, 192, 222); color: white;'>l2</span>
+            <br><br>
+            <!-- C -->
+            <label>C :</label>
+            <span class = 'description'><span class = 'parameters'>(float) </span>inverse of regularization strength</span>
             <br>
-            <input type="text" value= '2' id = 'p' placeholder="positive number > 0" class="form-control" data-role = 'tagsinput'/>
-            <br>
-            <br>
+            <input type="text" value= '1.0' id = 'C' placeholder = 'positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+
             <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
     </form>
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
-    <script type="text/javascript" src = '../script/regression_nearest.js'></script>
+    <script type="text/javascript" src = '../script/logistic.js'></script>
+    <script type="text/javascript">
+       
+       // change color of parameter box
+       $('.parameter_box').on('click', function(){
+        
+            var bg_blue = 'rgb(91, 192, 222)'
+            var curr_col = $(this).css('background-color');
+            if(curr_col != bg_blue)
+            {
+                $(this).css('background-color', bg_blue);
+                $(this).css('color', 'white');
+            }
+            else
+            {
+                $(this).css('background-color', 'transparent');
+                $(this).css('color', bg_blue);
+            }
+       });
+    </script>
 </body>
 </html>
