@@ -12,8 +12,8 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- CSS -->
-    <link rel = 'stylesheet' href = '../css/sub_menu_style.css'>
-    <link rel="stylesheet" type="text/css" href= '../css/bootstrap-tagsinput.css'>
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+    <link rel="stylesheet" type="text/css" href= '../stylesheets/bootstrap-tagsinput.css'>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Actor|Noto+Sans+SC|Sarabun&display=swap" rel="stylesheet">
@@ -27,13 +27,13 @@
         <hr>
        <span>
             <label>Train set</label>
-            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'train_file_info'></p>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
        </span>
        <span>
             <label>Test set</label>
-            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'test_file_info'></p>
+            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'test_file_info'></p>
        </span>
 
             <p class = 'heading'>Parameters</p>
@@ -90,6 +90,8 @@
     </form>
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
     <script type="text/javascript" src = '../script/regression_random.js'></script>
     <script type="text/javascript">
        

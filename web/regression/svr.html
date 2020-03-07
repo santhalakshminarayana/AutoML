@@ -12,8 +12,8 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- CSS -->
-    <link rel = 'stylesheet' href = '../css/sub_menu_style.css'>
-    <link rel="stylesheet" type="text/css" href= '../css/bootstrap-tagsinput.css'>
+    <link rel = 'stylesheet' type='text/css' href = '../stylesheets/sub_menu_style.css'>
+    <link rel="stylesheet" type="text/css" href= '../stylesheets/bootstrap-tagsinput.css'>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Actor|Noto+Sans+SC|Sarabun&display=swap" rel="stylesheet">
@@ -27,48 +27,52 @@
         <hr>
        <span>
             <label>Train set</label>
-            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'train_file_info'></p>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
        </span>
        <span>
             <label>Test set</label>
-            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'test_file_info'></p>
+            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'test_file_info'></p>
        </span>
 
             <p class = 'heading'>Parameters</p>
             <hr>
-            <!-- Kernel -->
-            <label>Kernel :</label>
-            <span class = 'description'><span class = 'parameters'>(string) </span>kernel method to be used</span>
-            <br><br>
-            <span class = 'parameter_box' name = 'kernel' >linear</span>
-            <span class = 'parameter_box' name = 'kernel' style = 'background-color: rgb(91, 192, 222); color: white;'>rbf</span>
-            <span class = 'parameter_box' name = 'kernel' >sigmoid</span>
-            <br><br>
-            <!-- Gamma -->
-            <label>Gamma :</label>
-            <span class = 'description'><span class = 'parameters'>('scale', 'auto' or float) </span>kernel coefficient</span>
-            <br>
-            <input type="text" value= 'scale' id = 'gamma' placeholder = 'scale, auto or number > 0.0' class = 'form-control' data-role = 'tagsinput' />
-            <br><br>
-            <!-- C -->
-            <label>C :</label>
-            <span class = 'description'><span class = 'parameters'>(float) </span>regularization parameter</span>
-            <br>
-            <input type="text" value= '1.0' id = 'C' placeholder='positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
-            <br><br>
-            <!-- epsilon -->
-            <label>Epsilon :</label>
-            <span class = 'description'><span class = 'parameters'>(float) </span>margin of tolerance where no penalty is given to errors</span>
-            <br>
-            <input type="text" value= '0.1' id = 'epsilon' placeholder = 'positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
-            <br><br>
+            <div id = 'param'>
+                <!-- Kernel -->
+                <label>Kernel :</label>
+                <span class = 'description'><span class = 'parameters'>(string) </span>kernel method to be used</span>
+                <br><br>
+                <span class = 'parameter_box' name = 'kernel' >linear</span>
+                <span class = 'parameter_box' name = 'kernel' style = 'background-color: rgb(91, 192, 222); color: white;'>rbf</span>
+                <span class = 'parameter_box' name = 'kernel' >sigmoid</span>
+                <br><br>
+                <!-- Gamma -->
+                <label>Gamma :</label>
+                <span class = 'description'><span class = 'parameters'>('scale', 'auto' or float) </span>kernel coefficient</span>
+                <br>
+                <input type="text" value= 'scale' id = 'gamma' placeholder = 'scale, auto or number > 0.0' class = 'form-control' data-role = 'tagsinput' />
+                <br><br>
+                <!-- C -->
+                <label>C :</label>
+                <span class = 'description'><span class = 'parameters'>(float) </span>regularization parameter</span>
+                <br>
+                <input type="text" value= '1.0' id = 'C' placeholder='positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
+                <br><br>
+                <!-- epsilon -->
+                <label>Epsilon :</label>
+                <span class = 'description'><span class = 'parameters'>(float) </span>margin of tolerance where no penalty is given to errors</span>
+                <br>
+                <input type="text" value= '0.1' id = 'epsilon' placeholder = 'positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
+                <br><br>
+            </div>
 
             <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
     </form>
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
     <script type="text/javascript" src = '../script/svr.js'></script>
     <script type="text/javascript">
        
@@ -88,6 +92,8 @@
                 $(this).css('color', bg_blue);
             }
        });
+
+
     </script>
 </body>
 </html>
