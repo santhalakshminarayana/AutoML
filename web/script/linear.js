@@ -34,7 +34,7 @@ $(document).ready(function(){
 		if(fail == 1)
 			return;
 		
-		window.location.replace('../web_frontend/display.html');
+		window.location.replace('../pages/display.html');
 
 		eel.get_parameters(model_type, model_name, dataset_files);
 

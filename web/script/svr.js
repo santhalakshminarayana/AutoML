@@ -63,7 +63,7 @@ $(document).ready(function(){
 		param['C'] = get_parameters_text('C', '1.0')
 		param['epsilon'] = get_parameters_text('epsilon', '0.1');
 
-		window.location.replace('../web_frontend/display.html');
+		window.location.replace('../pages/display.html');
 
 		eel.get_parameters(model_type, model_name, dataset_files, param);
 

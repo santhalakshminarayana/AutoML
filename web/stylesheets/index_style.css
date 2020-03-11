@@ -5,6 +5,33 @@ html,body
 	margin: 0;
 }
 
+@font-face {
+    font-family: 'Ma Shan Zheng';
+    src: url('../fonts/mashanzheng-regular-webfont.woff2') format('woff2'),
+         url('../fonts/mashanzheng-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PT Sans Caption';
+    src: url('../fonts/ptsanscaption-regular-webfont.woff2') format('woff2'),
+         url('../fonts/ptsanscaption-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    src: url('../fonts/sniglet-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sniglet-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .welcome-div
 {
 	position: absolute;

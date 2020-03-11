@@ -28,10 +28,12 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 	logs = []
 	status = 'pass'
 
-	logs.append('Processing ' + data_type + 'dataset')
+	logs.append('Processing ' + data_type + ' dataset')
 	# check whether dataset contains header or not
+	has_header = False
 	try:
 		has_header = csv.Sniffer().has_header(open(file_name).read(2048))
+
 	except:
 		logs.append('Be sure dataset file is not empty or with proper delimeters accordingly.')
 		status = 'fail'
@@ -40,16 +42,26 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 	# read dataset file accordingly with and without header 
 	df = None
 	if file_type == 'csv':
-		if has_header == False:
-			df = pd.read_csv(file_name, sep = ",", header = None)
-		else:
-			df = pd.read_csv(file_name, sep = ",")
+		try:
+			if has_header == False:
+				df = pd.read_csv(file_name, sep = ",", header = None)
+			else:
+				df = pd.read_csv(file_name, sep = ",")
+		except:
+			logs.append('Error while checking dataset file. May due to delimeter, inconsistent format ...')
+			status = 'fail'
+			return status, logs, None
 
-	elif file_name == 'txt':
-		if has_header == False:
-			df = pd.read_csv(file_name, sep = " ", header = None)
-		else:
-			df = pd.read_csv(file_name, sep = " ")
+	elif file_type == 'txt':
+		try:
+			if has_header == False:
+				df = pd.read_csv(file_name, sep = " ", header = None)
+			else:
+				df = pd.read_csv(file_name, sep = " ")
+		except:
+			logs.append('Error while checking dataset file. May due to delimeter, inconsistent format ...')
+			status = 'fail'
+			return status, logs, None
 
 	if has_header == False:
 		logs.appned('No header found or header type mismatch.')

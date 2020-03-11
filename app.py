@@ -29,17 +29,20 @@ def get_parameters(model_type, model_name, dataset_files,
 	if model_type == 'regression':
 		# pre-processing data files
 		train_status, train_logs, train_data_dict = data_preprocess_regression(dataset_files['train_file'])
-		eel.update_success_logs(train_logs)
+		train_logs = '\n'.join(train_logs)
 		test_status, test_logs, test_data_dict = None, None, None
 		if train_status == 'pass':
+			eel.update_success_logs(train_logs)
 			test_status, test_logs, test_data_dict = data_preprocess_regression(dataset_files['test_file'], 
 																				'test', train_data_dict['pca'])
+			test_logs = '\n'.join(test_logs)
 		else:
+			print(train_logs)
 			eel.update_fail_logs('Train', train_logs)
-			return 
 
 		if test_status == 'pass':
 			eel.update_success_logs(test_logs)
+
 		else:
 			eel.update_fail_logs('Test', test_logs)
 

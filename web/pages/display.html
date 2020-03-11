@@ -16,9 +16,11 @@
     <!-- CSS -->
     <link rel = 'stylesheet' href = '../stylesheets/display.css'>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Actor|Noto+Sans+SC|Sarabun&display=swap" 
-    rel="stylesheet">
+    <!-- Script -->
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type= "text/javascript" src = '../script/display.js'>
+    </script>
 
 </head>
 
@@ -26,19 +28,14 @@
     
     <!-- Logs of dataset pre-processing -->
     <p id = 'dataset_logs'>
+        message displays here
     </p>
     <!-- Dataset processing result -->
     <p id = 'data_processing_result'>
     </p>
     <!-- Go Back Button -->
-    <button class = 'button' id = 'next_button' style = 'display: none;' 
-    onclick = 'window.history.go(-1); return false;'><span>Back</span></button>
+    <button class = 'button' id = 'back_button' ><span>Back</span></button>
 
-    <!-- Script -->
-    <!-- eel.js -->
-    <script type = "text/javascript" src = "../../eel.js"></script>
-    <script type="text/javascript" src = '../script/display.js'>
-    </script>
 
 </body>
 </html>

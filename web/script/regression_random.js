@@ -66,7 +66,7 @@ $(document).ready(function(){
 		param['max_leaf_nodes'] = get_parameters_text('max_leaf_nodes', 'None');
 		param['bootstrap'] = get_parameters_box('bootstrap', 'True');
 
-		window.location.replace('../web_frontend/display.html');
+		window.location.replace('../pages/display.html');
 
 		eel.get_parameters(model_type, model_name, dataset_files, param);
 

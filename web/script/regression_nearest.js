@@ -61,7 +61,7 @@ $(document).ready(function(){
 		param['n_neighbors'] = get_parameters_text('n_neighbors', '5');
 		param['p'] = get_parameters_text('p', '2');
 		
-		window.location.replace('../web_frontend/display.html');
+		window.location.replace('../pages/display.html');
 
 		eel.get_parameters(model_type, model_name, dataset_files, param);
 	});
