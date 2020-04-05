@@ -1,12 +1,15 @@
-import numpy as numpy
 import pandas as pd
 import csv
-import os
+
+import category_encoders as ce
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
-def data_preprocess_regression(file_name, data_type = 'train', pca = None):
+from utils.update_logs import update_pass, update_fail
+
+def data_preprocess_regression(file_name, data_type = 'train', encoder = None, pca = None,):
 	'''
 	Params:
 	------
@@ -28,7 +31,7 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 	logs = []
 	status = 'pass'
 
-	logs.append('Processing ' + data_type + ' dataset')
+	logs.append('Processing ' + data_type + ' dataset.')
 	# check whether dataset contains header or not
 	has_header = False
 	try:
@@ -64,7 +67,7 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 			return status, logs, None
 
 	if has_header == False:
-		logs.appned('No header found or header type mismatch.')
+		logs.append('No header found or header type mismatch.')
 		logs.append('Assigning headers implicitly.')
 		df.columns = ['co_' + str(i+1) for i in range(len(df.iloc[0].values))]
 		logs.append(f'columns = {df.columns.tolist()}')
@@ -83,40 +86,39 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 	null_cols = []
 	for col in cols:
 		if is_null[col] == True:
-			null_cols.appned(col)
+			null_cols.append(col)
 			if cols_dtypes[col] == 'float':
 				df[col].fillna(df[col].mean(), inplace = True)
 			else:
 				df[col].fillna(df[col].mode()[0], inplace = True)
 	if len(null_cols) > 0:
-		logs.appned(f'Dataset has NULL values present at columns - {null_cols}')
-		logs.append('For these columns NULL values are replaced with MODE of respective column.')
+		logs.append(f'Dataset has NULL values present at columns - {null_cols}.')
+		logs.append('For these columns NULL values are replaced with MEAN or MODE of respective column.')
 
 	# remove duplicate rows
 	if data_type == 'train':
 		logs.append('Removing duplicate rows if present.')
 		df.drop_duplicates(inplace = True)
 
-	# convert categorical values to one-hot encoding
-	logs.append('Converting categorical columns into numeric.')
-	df = pd.get_dummies(df, prefix_sep = '_', drop_first = True)
-	if df.columns.shape[0] > 200:
-		logs.append('Too many categorical columns or categorical values.')
-		logs.append('Cannot proceed furthur.') 
-		logs.append('Please re-check datasets to have non-categorical columns if possible.')
-		status = 'fail'
-		return status, logs, None
-	else:
-		logs.append(f'After converting columns are {df.columns.tolist()}')
-
-	X, Y = None, None 
 	# split dataframe into X and Y for training data
+	X, Y = None, None 
 	if data_type == 'train':
 		X = df.iloc[:, :-1].values
 		Y = df.iloc[:, -1].values
 
 	else:
 		X = df.values
+
+	data_dict = dict()
+	# convert categorical values to numeric applying backward-difference-encoding
+	logs.append('Converting categorical columns into numeric by applying BackwardDifferenceEncoder.')
+	if data_type == 'train':
+		encoder = ce.BackwardDifferenceEncoder()
+		_ = encoder.fit(X)
+		data_dict['encoder'] = encoder
+		X = encoder.transform(X)
+	else:
+		X = encoder.transform(X)
 
 	X_train, X_eval, Y_train, Y_eval = None, None, None, None
 	if data_type == 'train':
@@ -125,22 +127,21 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 		# if datapoints less than 10000 make split ratio 8 : 2
 		if X.shape[0] < 10000:
 			eval_size = 0.2
-		logs.append('Splitting dataset into train data and evaluation data.')
-		logs.append(f'With ratio {(1 - eval_size) * 100}% : {eval_size * 100}% ')
+		logs.append('Splitting dataset into train data and evaluation data ')
+		logs.append(f'with ratio {(1 - eval_size) * 100}% : {eval_size * 100}% ')
 		X_train, X_eval, Y_train, Y_eval = train_test_split(X, Y, test_size = eval_size, random_state = 42)
 
 	# feature scaling
 	logs.append('Standardizing data.')
 	sc = StandardScaler()
-	if X_train != None:
+	if data_type == 'train':
 		X_train = sc.fit_transform(X_train)
 		X_eval = sc.fit_transform(X_eval)
 	else:
 		X = sc.fit_transform(X)
 
-	data_dict = dict()
 	# applying PCA to reduce features
-	logs.append('Applying PCA to reduce dimensions with variance 99%')
+	logs.append('Applying PCA to reduce dimensions with variance 99%.')
 	if data_type == 'train':
 		pca = PCA(.99)
 		pca = pca.fit(X_train)
@@ -153,7 +154,30 @@ def data_preprocess_regression(file_name, data_type = 'train', pca = None):
 		data_dict['pca'] = pca
 
 	else:
-		X = pca.transform(X)
-		data_dict['X'] = X
+		try:
+			X = pca.transform(X)
+			data_dict['X'] = X
+		except:
+			status = 'fail'
 
 	return status, logs, data_dict
+
+def regression_dataset(dataset_files):
+	# pre-processing data files
+	train_status, train_logs, train_data_dict = data_preprocess_regression(dataset_files['train_file'])
+	test_status, test_logs, test_data_dict = 'fail', None, None
+	if train_status == 'pass':
+		update_pass('Train', train_logs)
+		test_status, test_logs, test_data_dict = data_preprocess_regression(dataset_files['test_file'], 
+												'test', train_data_dict['encoder'], train_data_dict['pca'])
+	else:
+		update_fail('Train', train_logs)
+		return None
+
+	if test_status == 'pass':
+		update_pass('Test', test_logs)
+		del train_data_dict['pca']
+		return [train_data_dict, test_data_dict]
+	else:
+		update_fail('Test', test_logs)
+		return None

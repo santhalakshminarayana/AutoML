@@ -33,15 +33,26 @@
             <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
             <p class = 'file_info' id = 'test_file_info'></p>
        </span>
-       <button class = 'button' id = 'next_button'><span>Next</span></button>
+       
     </form>
 
+    <!-- Logs -->
+    <!-- Logs of dataset pre-processing -->
+    <p id = 'dataset_logs'>
+    </p>
+    <!-- Dataset processing result -->
+    <p id = 'data_processing_result'>
+    </p>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
 
     <!-- Script -->
     <!-- eel.js -->
     <script type = "text/javascript" src = "../../eel.js"></script>
-    <script type="text/javascript" src = '../script/linear.js'>
-    </script>
+    <script type="text/javascript" src = '../script/linear.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
 
 </body>
 </html>

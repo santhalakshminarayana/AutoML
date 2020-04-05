@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	$('#next_button').on('click', async function(){
+
 		model_type = 'regression';
 		model_name = 'linear';
 
@@ -33,9 +34,9 @@ $(document).ready(function(){
 		}
 		if(fail == 1)
 			return;
-		
-		window.location.replace('../pages/display.html');
 
+		empty_all_running_logs_regression();
+		
 		eel.get_parameters(model_type, model_name, dataset_files);
 
 	});

@@ -24,13 +24,13 @@
         <hr>
        <span>
             <label>Train set</label>
-            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'train_file_info'></p>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
        </span>
        <span>
             <label>Test set</label>
-            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .xlsx, .txt only'>
-            <p id = 'test_file_info'></p>
+            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'test_file_info'></p>
        </span>
 
             <p class = 'heading'>Parameters</p>
@@ -49,11 +49,17 @@
             <input type="text" value= '1.0' id = 'C' placeholder = 'positive number > 0.0' class = 'form-control' data-role = 'tagsinput' />
             <br><br>
 
-            <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
     </form>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
     <script type="text/javascript" src = '../script/logistic.js'></script>
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
     <script type="text/javascript">
        
        // change color of parameter box

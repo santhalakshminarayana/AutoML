@@ -93,6 +93,50 @@ label
     cursor: pointer;
 }
 
+.input_text_parameter
+{
+    padding: 0.5%;
+    outline: none;
+    border:none;
+    border-bottom: 2px solid rgb(91, 192, 222);
+    font-family: 'Sarabun', sans-serif;
+    color: #444C5C;
+    width: 20%;
+}
+
+.input_text_parameter:focus
+{
+    background-color: rgb(50,50,50);
+    color: white;
+}
+
+input[type = "radio"] 
+{
+  opacity: 0;
+  position: fixed;
+}
+
+.radio_button_label
+{
+    display: inline-block;
+    background-color: rgb(91, 192, 222);
+    padding: 10px;
+    font-family: sans-serif, Arial;
+    font-size: 1.2rem;
+    border: 2px solid black;
+    border-radius: 4px;
+    color: white;
+    width: auto;
+
+}
+
+input[type="radio"]:checked + .radio_button_label 
+{
+    background-color: black;
+    border-color: white;
+    border: 2px solid rgb(91, 192, 222);
+}
+
 .button {
   border-radius: 4px;
   background-color: #262F34;
@@ -106,8 +150,20 @@ label
   cursor: pointer;
   margin: 5%;
   float: right;
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+
 }
 
 .button:hover{
   padding-right: 3%;
+}
+
+.dataset_logs
+{
+  font-family: 'Sarabun', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 5%;
 }

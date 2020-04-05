@@ -82,14 +82,47 @@
             <span class = 'parameter_box' name = 'bootstrap' >False</span>
             <br><br>
             
-
-            <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
     </form>
+
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label id = 'dataset_reading_label'>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label id = 'dataset_read_status_label'>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Evaluation Metrics plots -->
+    <div id = 'plots' style = 'display: none'>
+        <!-- Training Data evaluation -->
+        <label id = 'dataset_read_status_label'>Training Data Metrics</label>
+        <br>
+        <img scr = '' id = 'training_data_evaluation'>
+        <br>
+        <!-- Evaluation Data evaluation -->
+        <label id = 'dataset_read_status_label'>Evaluation Data Metrics</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_evaluation'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
 
     <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
     <!-- eel.js -->
     <script type = "text/javascript" src = "../../eel.js"></script>
     <script type="text/javascript" src = '../script/regression_random.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
     <script type="text/javascript">
        
        // change color of parameter box
