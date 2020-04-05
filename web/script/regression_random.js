@@ -46,9 +46,10 @@ $(document).ready(function(){
 		param['max_leaf_nodes'] = get_parameters_text('max_leaf_nodes', 'None');
 		param['bootstrap'] = get_parameters_box('bootstrap', 'True');
 
+		// recieves (model, evaluation_metrics) 
 		evaluation_metrics =  await eel.get_parameters(model_type, model_name, dataset_files, param)();
 		if(evaluation_metrics != 'fail')
-			plot_evaluation_metrics(evaluation_metrics);
+			plot_evaluation_metrics(evaluation_metrics[0], evaluation_metrics[1]);
 
 	});
 });

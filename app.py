@@ -19,7 +19,8 @@ from ml_models.dimension_models import Build_Dimension_Model
 # import evaluation metrics
 from utils.evaluate_performance import regression_metrics, classification_metrics
 from utils.evaluate_performance import base64_regression_metrics, base64_classification_metrics
-from utils.evaluate_performance import base64_confusion_matrix
+from utils.evaluate_performance import base64_confusion_matrix, base64_classes_bar
+from utils.evaluate_performance import base64_explained_variance, base64_kl_divergence
 
 eel.init('web')
 
@@ -58,6 +59,10 @@ def get_parameters(model_type, model_name, dataset_files,
 		# fit model
 		try:
 			model.fit()
+
+			# get best model
+			best_model = model.best_estimator()
+
 			# prdict dataset
 			Y_train_pred = model.predict(train_data_dict['X_train'])
 			Y_eval_pred = model.predict(train_data_dict['X_eval'])
@@ -74,7 +79,8 @@ def get_parameters(model_type, model_name, dataset_files,
 			eval_data_metrics_plot = base64_regression_metrics(eval_data_metrics)
 
 			evaluation_metrics = [train_data_metrics_plot, eval_data_metrics_plot]
-			return evaluation_metrics
+
+			return [str(best_model), evaluation_metrics]
 		except:
 			return 'fail'
 
@@ -90,6 +96,10 @@ def get_parameters(model_type, model_name, dataset_files,
 		# fit model
 		try:
 			model.fit()
+
+			# get best model
+			best_model = model.best_estimator()
+
 			# prdict dataset
 			Y_train_pred = model.predict(train_data_dict['X_train'])
 			Y_eval_pred = model.predict(train_data_dict['X_eval'])
@@ -107,7 +117,8 @@ def get_parameters(model_type, model_name, dataset_files,
 
 			evaluation_metrics = [train_data_metrics_plot, eval_data_metrics_plot]
 			confusion_matrix = [train_data_confusion_matrix_plot, eval_data_confusion_matrix_plot]
-			return [evaluation_metrics, confusion_matrix]
+			
+			return [str(best_model), evaluation_metrics, confusion_matrix]
 
 		except:
 			return 'fail'
@@ -122,9 +133,14 @@ def get_parameters(model_type, model_name, dataset_files,
 		try:
 			model = Build_Clustering_Model(train_data_dict['X'], model_name, para)
 			model.fit()
-			print(model.clustered_model.labels_)
+			labels = model.clustered_model.labels_
+
+			# get base64 classes bar plot
+			labels_bar_plot = base64_classes_bar(labels, model_type)
+			return labels_bar_plot
+
 		except:
-			print('Improper parameters')
+			return 'fail'
 
 
 	if model_type == 'anomaly':
@@ -147,9 +163,15 @@ def get_parameters(model_type, model_name, dataset_files,
 			else:
 				labels = model.predict(train_data_dict['X'])
 
-			print(list(map(label_convert, labels)))
+			# get base64 classes bar plot
+			labels = list(map(label_convert, labels))
+
+			# get base64 classes bar plot
+			labels_bar_plot = base64_classes_bar(labels, model_type)
+			return labels_bar_plot
+
 		except:
-			print('Improper parameters')
+			return 'fail'
 
 
 	if model_type == 'dimension':
@@ -162,9 +184,24 @@ def get_parameters(model_type, model_name, dataset_files,
 		try:
 			model = Build_Dimension_Model(train_data_dict['X'], model_name, para)
 			model.fit()
-			print(model.predict(train_data_dict['X']))
+			# transform dimensions
+			components = model.predict(train_data_dict['X'])
+
+			# get explained variance 
+			variance_ratio = model.explained_variance_ratio().tolist()
+			convergence_plot = None
+			if variance_ratio is not None:
+				convergence_plot = base64_explained_variance(variance_ratio)
+
+			# get kl-divergence
+			kl_divergence = model.kl_divergence()
+			if kl_divergence is not None:
+				convergence_plot = base64_kl_divergence(kl_divergence)
+
+			return convergence_plot
+
 		except:
-			print('Improper parameters')
+			return 'fail'
 
 
 eel.start('index.html', size = (600, 500))

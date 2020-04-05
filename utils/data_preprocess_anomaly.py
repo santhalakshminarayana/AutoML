@@ -70,7 +70,7 @@ def data_preprocess_with_categorical(file_name, data_type = 'train', encoder = N
 		logs.append('No header found or header type mismatch.')
 		logs.append('Assigning headers implicitly.')
 		df.columns = ['co_' + str(i+1) for i in range(len(df.iloc[0].values))]
-		logs.append(f'columns = {df.columns.tolist()}')
+		logs.append(f'columns = {df.columns.tolist()} .')
 
 	# check for dtype of last column
 	if data_type == 'train' and  df.dtypes[-1] == 'float':

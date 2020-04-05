@@ -30,7 +30,9 @@ $(document).ready(function(){
 		param['n_components'] = get_parameters_text('n_components', '2');
 		param['n_iter'] = get_parameters_text('n_iter', '5');
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		convergence = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(convergence != 'fail')
+			plot_convergence(convergence);
 
 	});
 });

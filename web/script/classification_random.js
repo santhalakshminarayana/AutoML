@@ -46,11 +46,12 @@ $(document).ready(function(){
 		param['max_leaf_nodes'] = get_parameters_text('max_leaf_nodes', 'None');
 		param['bootstrap'] = get_parameters_box('bootstrap', 'True');
 
+		// recieves (model, evaluation_metrics, confusion_matrix)
 		evaluation_plots = await eel.get_parameters(model_type, model_name, dataset_files, param)();
 		if(evaluation_plots != 'fail')
 		{
-			plot_evaluation_metrics(evaluation_plots[0]);
-			plot_confusion_matrix(evaluation_plots[1]);
+			plot_evaluation_metrics(evaluation_plots[0], evaluation_plots[1]);
+			plot_confusion_matrix(evaluation_plots[2]);
 		}
 
 	});

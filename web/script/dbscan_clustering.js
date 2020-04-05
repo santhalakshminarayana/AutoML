@@ -31,7 +31,9 @@ $(document).ready(function(){
 		param['min_samples'] = get_parameters_text('min_samples', '5');
 		param['metric'] = get_radio_button_value_by_ids(['euclidean', 'l1', 'l2', 'manhattan', 'cosine']);
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		classes_bar = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(classes_bar != 'fail')
+			plot_classes_bar(classes_bar);
 
 	});
 });

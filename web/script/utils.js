@@ -51,6 +51,9 @@ function empty_all_running_logs_regression()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model').hide();
+	$('#best_model').text('');
+	$('#plots').hide()
 	$('#training_data_evaluation').attr('src', '');
 	$('#evaluation_data_evaluation').attr('src', '');
 }
@@ -60,8 +63,13 @@ function empty_all_running_logs_classification()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model').hide();
+	$('#best_model').text('');
+	$('#plots').hide();
 	$('#training_data_evaluation').attr('src', '');
 	$('#evaluation_data_evaluation').attr('src', '');
+	$('#training_data_confusion_matrix').attr('src', '');
+	$('#evaluation_data_confusion_matrix').attr('src', '');
 }
 
 function empty_all_running_logs_clustering()
@@ -69,6 +77,8 @@ function empty_all_running_logs_clustering()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#plots').hide();
+	$('#predicted_classes_plot').attr('src', '');
 }
 
 function empty_all_running_logs_anomaly()
@@ -76,6 +86,8 @@ function empty_all_running_logs_anomaly()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#plots').hide();
+	$('#predicted_classes_plot').attr('src', '');
 }
 
 function empty_all_running_logs_dimension()
@@ -83,10 +95,14 @@ function empty_all_running_logs_dimension()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#plots').hide();
+	$('#convergence_plot').attr('src', '');
 }
 
-function plot_evaluation_metrics(evaluation_metrics)
+function plot_evaluation_metrics(model, evaluation_metrics)
 {
+	$('#model').show();
+	$('#best_model').append(model);
 	$('#plots').show();
 	$('#training_data_evaluation').attr('src', evaluation_metrics[0]);
 	$('#evaluation_data_evaluation').attr('src', evaluation_metrics[1]);
@@ -96,4 +112,16 @@ function plot_confusion_matrix(confusion_matrix)
 {
 	$('#training_data_confusion_matrix').attr('src', confusion_matrix[0]);
 	$('#evaluation_data_confusion_matrix').attr('src', confusion_matrix[1]);
+}
+
+function plot_classes_bar(classes_bar)
+{
+	$('#plots').show();
+	$('#predicted_classes_plot').attr('src', classes_bar);
+}
+
+function plot_convergence(convergence)
+{
+	$('#plots').show();
+	$('#convergence_plot').attr('src', convergence);
 }

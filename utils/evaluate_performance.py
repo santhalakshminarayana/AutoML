@@ -2,9 +2,12 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.metrics import classification_report
 import math
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
+
+from collections import Counter
 
 def regression_metrics(y_true, y_pred, n, p):
 	'''
@@ -66,7 +69,7 @@ def base64_regression_metrics(metrics):
 		-------
 			plot_data (base64) : base64 string format of evaluation metrics
 	'''
-	fig, ax = plt.subplots()
+	fig,(ax) = plt.subplots(figsize=(6,4), ncols=1)
 
 	cols = ['Metric', 'Value']
 	rows = list(metrics.items())
@@ -89,7 +92,7 @@ def base64_regression_metrics(metrics):
 	return plot_data
 
 def base64_classification_metrics(metrics):
-		'''
+	'''
 		Param:
 		------
 			metrics (dict) : metrics related to classification
@@ -114,7 +117,7 @@ def base64_classification_metrics(metrics):
 
 	report.insert(-3, [''] * 5)
 
-	fig,(ax) = plt.subplots(figsize=(5,6), ncols=1)
+	fig,(ax) = plt.subplots(figsize=(5,7), ncols=1)
 
 	cols = report[0]
 	rows = report[1:]
@@ -139,7 +142,7 @@ def base64_classification_metrics(metrics):
 	return plot_data
 
 def base64_confusion_matrix(metrics):
-		'''
+	'''
 		Param:
 		------
 			metrics (dict) : metrics related to regression
@@ -176,6 +179,123 @@ def base64_confusion_matrix(metrics):
 	ax.set_title("Confusion Matrix", fontsize = 20)
 	plt.xlabel('Predicted Class', fontsize = 16)
 	plt.ylabel('True Class', fontsize = 16)
+	fig.tight_layout()
+
+	buf = BytesIO()
+	fig.savefig(buf, format="png")
+	plot_data = 'data:image/png;base64, ' +  base64.b64encode(buf.getbuffer()).decode("utf-8")
+	return plot_data
+
+def base64_classes_bar(labels, model_type):
+	'''
+		Param:
+		------
+			labels (list) : predicted labels
+			model_type (str) : model type
+
+		Return:
+		-------
+		 	plot_data (base64) : base64 string format of bar chart
+	'''
+	cnt = Counter(labels)
+	x = list(cnt.keys())
+	y = list(cnt.values())
+
+	try:
+		ind = x.index(-1)
+		x[ind] = 'Anomaly'
+		if model_type == 'anomay':
+			ind = x.index(0)
+			x[ind] = 'Not Anomaly'
+	except:
+		pass
+
+	x = list(map(str, x))
+
+	cmap = mpl.cm.get_cmap('Set2_r')
+	vmin, vmax = min(y), max(y)
+	norm = mpl.colors.Normalize(vmin = vmin, vmax = vmax)
+
+	colors = []
+	for i in y:
+	    val = norm(i)
+	    colors.append(cmap(val))
+
+	fig, (ax) = plt.subplots(figsize = (8, 5), ncols = 1)
+	ax.bar(x, y, color = colors, width = 0.5)
+
+	ax.set_title("Predicted Classes", fontsize = 20)
+	plt.ylabel('Class Count', fontsize = 16)
+	plt.xlabel('Class', fontsize = 16)
+	fig.tight_layout()
+
+	buf = BytesIO()
+	fig.savefig(buf, format="png")
+	plot_data = 'data:image/png;base64, ' +  base64.b64encode(buf.getbuffer()).decode("utf-8")
+	return plot_data
+
+def base64_explained_variance(values):
+	'''
+		Param:
+		------
+		 	values (list) : explained variance values
+
+		Return:
+		--------
+			plot_data (base64) : base64 string format of explained variance table
+	'''
+	fig,(ax) = plt.subplots(figsize=(5,8), ncols=1)
+
+	cols = ['Component', 'Explained_Variance']
+	rows = []
+	for i, value in enumerate(values):
+	    rows.append(['Component_' + str(i + 1), value])
+	rows.append(['All Components', sum(values)])
+
+	cell_colors = [['#5BC0DE', '#E1B16A']] * (len(values) + 1)
+	col_colors = ['#F35A4A'] * 2
+
+	the_table = ax.table(cellText=rows, colWidths=[0.1, 0.15 ], cellColours = cell_colors, 
+	                     colLoc = 'left', cellLoc = 'left', colColours = col_colors,
+	                     colLabels=cols, loc = 'center', edges = 'closed')
+	the_table.set_fontsize(16)
+	the_table.scale(4, 4)
+
+	ax.axis('tight')
+	ax.axis('off')
+	fig.tight_layout()
+
+	buf = BytesIO()
+	fig.savefig(buf, format="png")
+	plot_data = 'data:image/png;base64, ' +  base64.b64encode(buf.getbuffer()).decode("utf-8")
+	return plot_data
+
+def base64_kl_divergence(value):
+	'''
+		Param:
+		------
+		 	value (float) : kl-divergence value
+
+		Return:
+		--------
+			plot_data (base64) : base64 string format of kl-divergence table
+	'''
+	fig,(ax) = plt.subplots(figsize=(4, 2), ncols=1)
+
+	cols = ['', 'Value']
+	rows = [['KL-Divergence', Value]]
+
+	cell_colors = [['#5BC0DE', '#E1B16A']]
+	col_colors = ['#F35A4A'] * 2
+
+	the_table = ax.table(cellText=rows, colWidths=[0.2, 0.15 ], cellColours = cell_colors, 
+	                     colLoc = 'left', cellLoc = 'left', colColours = col_colors,
+	                     colLabels=cols, loc = 'center', edges = 'closed')
+	the_table.set_fontsize(16)
+	the_table.scale(4, 4)
+
+	ax.axis('tight')
+	ax.axis('off')
 	fig.tight_layout()
 
 	buf = BytesIO()

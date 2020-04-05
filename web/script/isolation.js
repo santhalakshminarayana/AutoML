@@ -33,7 +33,9 @@ $(document).ready(function(){
 		param['max_features'] = get_parameters_text('max_features', '1.0');
 		param['bootstrap'] = get_radio_button_value_by_ids(['False', 'True']);
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		classes_bar = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(classes_bar != 'fail')
+			plot_classes_bar(classes_bar);
 
 	});
 });
