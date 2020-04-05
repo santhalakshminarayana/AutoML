@@ -29,7 +29,9 @@ $(document).ready(function(){
 		var param = {}
 		param['n_components'] = get_parameters_text('n_components', '"None"');
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		convergence = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(convergence != 'fail')
+			plot_convergence(convergence);
 
 	});
 });

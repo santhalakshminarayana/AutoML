@@ -41,7 +41,11 @@ $(document).ready(function(){
 		param['n_neighbors'] = get_parameters_text('n_neighbors', '5');
 		param['p'] = get_parameters_text('p', '2');
 		
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		// recieves (model, evaluation_metrics) 
+		evaluation_metrics =  await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(evaluation_metrics != 'fail')
+			plot_evaluation_metrics(evaluation_metrics[0], evaluation_metrics[1]);
+		
 	});
 
 });

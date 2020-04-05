@@ -33,7 +33,8 @@ $(document).ready(function(){
 		param['max_iter'] = get_parameters_text('max_iter', '300');
 		param['tol'] = get_parameters_text('tol', '0.0001');
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
-
+		classes_bar = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(classes_bar != 'fail')
+			plot_classes_bar(classes_bar);
 	});
 });

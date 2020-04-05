@@ -43,7 +43,10 @@ $(document).ready(function(){
 		param['C'] = get_parameters_text('C', '1.0')
 		param['epsilon'] = get_parameters_text('epsilon', '0.1');
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		// recieves (model, evaluation_metrics) 
+		evaluation_metrics =  await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(evaluation_metrics != 'fail')
+			plot_evaluation_metrics(evaluation_metrics[0], evaluation_metrics[1]);
 
 	});
 });

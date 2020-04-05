@@ -37,7 +37,9 @@ $(document).ready(function(){
 
 		empty_all_running_logs_regression();
 		
-		eel.get_parameters(model_type, model_name, dataset_files);
+		evaluation_metrics =  await eel.get_parameters(model_type, model_name, dataset_files)();
+		if(evaluation_metrics != 'fail')
+			plot_evaluation_metrics(evaluation_metrics[0], evaluation_metrics[1]);
 
 	});
 });

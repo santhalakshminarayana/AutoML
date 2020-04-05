@@ -201,14 +201,20 @@ def base64_classes_bar(labels, model_type):
 	x = list(cnt.keys())
 	y = list(cnt.values())
 
+	# change -1 to anomaly
 	try:
 		ind = x.index(-1)
 		x[ind] = 'Anomaly'
-		if model_type == 'anomay':
-			ind = x.index(0)
-			x[ind] = 'Not Anomaly'
 	except:
 		pass
+
+	# change 0 class to not-anomaly for anomaly detection
+	if model_type == 'anomaly':
+		try:
+			ind = x.index(0)
+			x[ind] = 'Not Anomaly'
+		except:
+			pass
 
 	x = list(map(str, x))
 

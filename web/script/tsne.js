@@ -35,7 +35,9 @@ $(document).ready(function(){
 		param['min_grad_norm'] = get_parameters_text('min_grad_norm', '0.0000001');
 		param['metric'] = get_radio_button_value_by_ids(['euclidean', 'l1', 'l2', 'manhattan', 'cosine']);
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		convergence = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(convergence != 'fail')
+			plot_convergence(convergence);
 
 	});
 });

@@ -53,7 +53,6 @@ $(document).ready(function(){
 			plot_evaluation_metrics(evaluation_plots[0], evaluation_plots[1]);
 			plot_confusion_matrix(evaluation_plots[2]);
 		}
-
 	});
 
 });

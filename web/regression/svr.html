@@ -66,14 +66,48 @@
             </div>
     </form>
 
-
     <!-- Logs -->
-    <!-- Logs of dataset pre-processing -->
-    <p id = 'dataset_logs'>
-    </p>
-    <!-- Dataset processing result -->
-    <p id = 'data_processing_result'>
-    </p>
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model -->
+    <div id = 'model' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model</p>
+        <hr>
+        
+        <!-- Model -->
+        <p class = 'dataset_logs' id = 'best_model'>
+        </p>
+    </div>
+    <!-- Evaluation Metrics plots -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model Evaluation</p>
+        <hr>
+        
+        <!-- Training Data evaluation -->
+        <label>Training Data Metrics</label>
+        <br>
+        <img scr = '' id = 'training_data_evaluation'>
+        <br>
+        <!-- Evaluation Data evaluation -->
+        <label>Evaluation Data Metrics</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_evaluation'>
+        <br>
+    </div>
 
     <!-- Next Button -->
     <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >

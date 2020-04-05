@@ -29,7 +29,9 @@ $(document).ready(function(){
 		var param = {}
 		param['threshold'] = get_parameters_text('threshold', '0.001');
 
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		classes_bar = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(classes_bar != 'fail')
+			plot_classes_bar(classes_bar);
 
 	});
 });

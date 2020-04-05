@@ -58,6 +58,56 @@
 
     </form>
 
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading'>Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model -->
+    <div id = 'model' style = 'display: none'>
+        <p class = 'heading'>Model</p>
+        <hr>
+        
+        <!-- Model -->
+        <p class = 'dataset_logs' id = 'best_model'>
+        </p>
+    </div>
+    <!-- Evaluation Metrics plots --> 
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading'>Model Evaluation</p>
+        <hr>
+
+         <!-- Training Data evaluation -->
+        <label>Training Data Metrics</label>
+        <br>
+        <img scr = '' id = 'training_data_evaluation'>
+        <br>
+         <!-- Training Data Confusion Matrix -->
+        <label>Confusion Matrix</label>
+        <br>
+        <img scr = '' id = 'training_data_confusion_matrix'>
+        <br>
+        <!-- Evaluation Data evaluation -->
+        <label>Evaluation Data Metrics</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_evaluation'>
+        <br>
+        <!-- Evaluation Data Confusion Matrix -->
+        <label>Confusion Matrix</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_confusion_matrix'>
+        <br>
+    </div>
+
     <!-- Next Button -->
     <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
 

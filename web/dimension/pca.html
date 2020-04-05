@@ -38,21 +38,30 @@
     
     </form>
 
-
     <!-- Logs -->
     <div id = 'logs' style = 'display: none'>
-        <p class = 'heading' id = 'dataset_preprocessing_heading'>
-        Dataset Pre-processing</p>
+        <p class = 'heading'>Dataset Pre-processing</p>
         <hr>
 
         <!-- Logs of dataset pre-processing -->
-        <label id = 'dataset_reading_label'>Dataset Reading Logs</label>
+        <label>Dataset Reading Logs</label>
         <p class = 'dataset_logs' id = 'dataset_logs'>
         </p>
         <!-- Dataset processing result -->
-        <label id = 'dataset_read_status_label'>Dataset Reading Status</label>
+        <label>Dataset Reading Status</label>
         <p class = 'dataset_logs' id = 'data_processing_result'>
         </p>
+    </div>
+    <!-- Model performance -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading'>Model Performance</p>
+        <hr>
+
+        <!-- Model Performance Plot -->
+        <label>Explained Variance</label>
+        <br>
+        <img scr = '' id = 'convergence_plot'>
+        <br>
     </div>
 
     <!-- Next Button -->

@@ -21,6 +21,8 @@ from utils.evaluate_performance import regression_metrics, classification_metric
 from utils.evaluate_performance import base64_regression_metrics, base64_classification_metrics
 from utils.evaluate_performance import base64_confusion_matrix, base64_classes_bar
 from utils.evaluate_performance import base64_explained_variance, base64_kl_divergence
+# import save result
+from utils.save_result import save_result
 
 eel.init('web')
 
@@ -80,6 +82,10 @@ def get_parameters(model_type, model_name, dataset_files,
 
 			evaluation_metrics = [train_data_metrics_plot, eval_data_metrics_plot]
 
+			# save result
+			save_result(Y_test_pred)
+
+			# return (model, training and evaluation metric plot images)
 			return [str(best_model), evaluation_metrics]
 		except:
 			return 'fail'
@@ -117,7 +123,11 @@ def get_parameters(model_type, model_name, dataset_files,
 
 			evaluation_metrics = [train_data_metrics_plot, eval_data_metrics_plot]
 			confusion_matrix = [train_data_confusion_matrix_plot, eval_data_confusion_matrix_plot]
-			
+
+			# save result
+			save_result(Y_test_pred)
+
+			# return (model, training and evaluation metric and confusion matrix plot images)		
 			return [str(best_model), evaluation_metrics, confusion_matrix]
 
 		except:
@@ -137,6 +147,11 @@ def get_parameters(model_type, model_name, dataset_files,
 
 			# get base64 classes bar plot
 			labels_bar_plot = base64_classes_bar(labels, model_type)
+
+			# save result
+			save_result(labels)
+
+			# return (predicted classes bar plot)
 			return labels_bar_plot
 
 		except:
@@ -168,6 +183,11 @@ def get_parameters(model_type, model_name, dataset_files,
 
 			# get base64 classes bar plot
 			labels_bar_plot = base64_classes_bar(labels, model_type)
+
+			# save result
+			save_result(labels)
+
+			# return (predicted classes bar plot)
 			return labels_bar_plot
 
 		except:
@@ -198,10 +218,14 @@ def get_parameters(model_type, model_name, dataset_files,
 			if kl_divergence is not None:
 				convergence_plot = base64_kl_divergence(kl_divergence)
 
+			# save result
+			save_result(components)
+
+			# return (transformed dimensions)
 			return convergence_plot
 
 		except:
 			return 'fail'
 
 
-eel.start('index.html', size = (600, 500))
+eel.start('index.html', size = (1200, 900))

@@ -41,6 +41,12 @@ $(document).ready(function(){
 		param['n_neighbors'] = get_parameters_text('n_neighbors', '5');
 		param['p'] = get_parameters_text('p', '2');
 		
-		eel.get_parameters(model_type, model_name, dataset_files, param);
+		// recieves (model, evaluation_metrics, confusion_matrix)
+		evaluation_plots = await eel.get_parameters(model_type, model_name, dataset_files, param)();
+		if(evaluation_plots != 'fail')
+		{
+			plot_evaluation_metrics(evaluation_plots[0], evaluation_plots[1]);
+			plot_confusion_matrix(evaluation_plots[2]);
+		}
 	});
 });
