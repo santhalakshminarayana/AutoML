@@ -32,6 +32,7 @@ $(document).ready(function(){
 		convergence = await eel.get_parameters(model_type, model_name, dataset_files, param)();
 		if(convergence != 'fail')
 			plot_convergence(convergence);
-
+		else
+			model_fail_status();
 	});
 });

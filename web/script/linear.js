@@ -40,6 +40,8 @@ $(document).ready(function(){
 		evaluation_metrics =  await eel.get_parameters(model_type, model_name, dataset_files)();
 		if(evaluation_metrics != 'fail')
 			plot_evaluation_metrics(evaluation_metrics[0], evaluation_metrics[1]);
+		else
+			model_fail_status();
 
 	});
 });

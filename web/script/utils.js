@@ -125,3 +125,8 @@ function plot_convergence(convergence)
 	$('#plots').show();
 	$('#convergence_plot').attr('src', convergence);
 }
+
+function model_fail_status()
+{
+	$('#model_fail_status').show();
+}

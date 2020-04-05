@@ -36,5 +36,7 @@ $(document).ready(function(){
 		classes_bar = await eel.get_parameters(model_type, model_name, dataset_files, param)();
 		if(classes_bar != 'fail')
 			plot_classes_bar(classes_bar);
+		else
+			model_fail_status();
 	});
 });
