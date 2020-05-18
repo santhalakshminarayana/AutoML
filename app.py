@@ -149,7 +149,7 @@ def get_parameters(model_type, model_name, dataset_files,
 			labels_bar_plot = base64_classes_bar(labels, model_type)
 
 			# save result
-			save_result(labels)
+			save_result(labels.tolist())
 
 			# return (predicted classes bar plot)
 			return labels_bar_plot
