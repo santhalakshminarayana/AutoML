@@ -20,3 +20,5 @@ Run app
 ```
 $ python app.py
 ```
+
+Read more about this on [Medium](https://medium.com/@santhalakshminarayana/automl-a-gui-application-to-make-ml-for-everyone-31d18ca84d89)
