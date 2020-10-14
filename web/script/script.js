@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// hide welcom message
-	var load_time = 0000;
+	var load_time = 2000;
 	setTimeout(function(){
 		$("#welcome").hide()},load_time);
 	setTimeout(function(){

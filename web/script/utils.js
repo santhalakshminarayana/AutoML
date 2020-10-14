@@ -51,6 +51,7 @@ function empty_all_running_logs_regression()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model_fail_status').hide();
 	$('#model').hide();
 	$('#best_model').text('');
 	$('#plots').hide()
@@ -63,6 +64,7 @@ function empty_all_running_logs_classification()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model_fail_status').hide();
 	$('#model').hide();
 	$('#best_model').text('');
 	$('#plots').hide();
@@ -77,6 +79,7 @@ function empty_all_running_logs_clustering()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model_fail_status').hide();
 	$('#plots').hide();
 	$('#predicted_classes_plot').attr('src', '');
 }
@@ -86,6 +89,7 @@ function empty_all_running_logs_anomaly()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model_fail_status').hide();
 	$('#plots').hide();
 	$('#predicted_classes_plot').attr('src', '');
 }
@@ -95,6 +99,7 @@ function empty_all_running_logs_dimension()
 	$('#logs').show();
 	$('#dataset_logs').text('');
 	$('#data_processing_result').text('');
+	$('#model_fail_status').hide();
 	$('#plots').hide();
 	$('#convergence_plot').attr('src', '');
 }
