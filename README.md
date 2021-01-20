@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) [![Python](https://img.shields.io/badge/Built_With-Python-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+
 AutoML is a desktop application developed with Python, HTML, CSS and JS which lets user to interact and automated Machine Learning pipeline tasks like
 * Data pre-processing
 * Hyper-parameter tuning
