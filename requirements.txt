@@ -1,4 +1,4 @@
-bottle==0.12.18
+bottle==0.12.19
 bottle-websocket==0.2.9
 category-encoders==2.2.2
 cycler==0.10.0
