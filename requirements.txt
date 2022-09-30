@@ -7,7 +7,7 @@ future==0.18.2
 gevent==20.5.0
 gevent-websocket==0.10.1
 greenlet==0.4.15
-joblib==0.15.1
+joblib==1.2.0
 kiwisolver==1.2.0
 matplotlib==3.2.1
 numpy==1.18.4
