@@ -3,7 +3,7 @@ bottle-websocket==0.2.9
 category-encoders==2.2.2
 cycler==0.10.0
 Eel==0.12.3
-future==0.18.2
+future==0.18.3
 gevent==20.5.0
 gevent-websocket==0.10.1
 greenlet==0.4.15
