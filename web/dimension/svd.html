@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+
+</head>
+
+<body class = 'container'>
+    <h1 class = 'name'>Truncated SVD</h1>
+    <form onsubmit = "return false"> 
+        <p class = 'heading'>Datasets full path</p>
+        <hr>
+       <span>
+            <label>Train set</label>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
+       </span>
+
+            <p class = 'heading'>Parameters</p>
+            <hr>
+            <!-- N_Components -->
+            <label>N_Components :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of dimensions to transform</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '2' id = 'n_components' placeholder = 'positive number >= 1' />
+            <br><br>
+            <!-- N_Iterations -->
+            <label>N_Iterations :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of iterations</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '5' id = 'n_iter' placeholder = 'positive number >= 1' />
+            <br><br>
+    
+    </form>
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading'>Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model Status-->
+    <div id = 'model_fail_status' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>Model build failed due to Improper Parameters or dataset.</p>
+    </div>
+    <!-- Model performance -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading'>Model Performance</p>
+        <hr>
+
+        <!-- Model Performance Plot -->
+        <label>Explained Variance</label>
+        <br>
+        <img scr = '' id = 'convergence_plot'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
+
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type="text/javascript" src = '../script/svd.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
+</body>
+</html>

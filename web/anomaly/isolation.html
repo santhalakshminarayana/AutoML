@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+
+</head>
+
+<body class = 'container'>
+    <h1 class = 'name'>Isolation Forest</h1>
+    <form onsubmit = "return false"> 
+        <p class = 'heading'>Datasets full path</p>
+        <hr>
+       <span>
+            <label>Train set</label>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
+       </span>
+
+            <p class = 'heading'>Parameters</p>
+            <hr>
+            <!-- N_Estimators -->
+            <label>N_Estimators :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of estimators to construct forest</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '100' id = 'n_estimators' placeholder = 'positive number >= 1' />
+            <br><br>
+            <!-- Max_Samples -->
+            <label>Max_Samples :</label>
+            <span class = 'description'><span class = 'parameters'>(int, float) </span>maximum number of samples to construct a tree</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '256' id = 'max_samples' placeholder = 'positive number >= 1 if int else (0.0, 1.0]' />
+            <br><br>
+            <!-- Contamination -->
+            <label>Contamination :</label>
+            <span class = 'description'><span class = 'parameters'>(float) </span>proportion of outliers in dataset, used to define threshold on scores</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '0.1' id = 'contamination' placeholder = 'positive number >= 0.0 and <= 0.5' />
+            <br><br>
+            <!-- Max_Features -->
+            <label>Max_Features :</label>
+            <span class = 'description'><span class = 'parameters'>(int, float) </span>maximum features to construct tree</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '1.0' id = 'min_samples' placeholder = 'positive number >= 1 if int else (0.0, 1.0]' />
+            <br><br>
+             <!-- Bootstrap -->
+            <label>Bootstrap :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>use bootstrap or not</span>
+            <br><br>
+            <input type = 'radio' id = 'False' name = 'bootstrap' value = 'False' checked = 'checked'>
+            <label class = 'radio_button_label' for = 'False'>False</label>
+            <input type = 'radio' id = 'True' name = 'bootstrap' value = 'True'>
+            <label class = 'radio_button_label' for = 'True'>True</label>
+            <br><br>
+    
+    </form>
+
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading'>Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model Status-->
+    <div id = 'model_fail_status' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>Model build failed due to Improper Parameters or dataset.</p>
+    </div>
+    <!-- Predicted Classe Plots -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading'>Model Predictions</p>
+        <hr>
+
+        <!-- Classes Plot -->
+        <label>Predicted Classes</label>
+        <br>
+        <img scr = '' id = 'predicted_classes_plot'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
+
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type="text/javascript" src = '../script/isolation.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
+</body>
+</html>

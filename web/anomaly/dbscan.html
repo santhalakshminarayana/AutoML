@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+
+</head>
+
+<body class = 'container'>
+    <h1 class = 'name'>DBSCAN</h1>
+    <form onsubmit = "return false"> 
+        <p class = 'heading'>Datasets full path</p>
+        <hr>
+       <span>
+            <label>Train set</label>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
+       </span>
+
+            <p class = 'heading'>Parameters</p>
+            <hr>
+            <!-- Epsilon -->
+            <label>Epsilon :</label>
+            <span class = 'description'><span class = 'parameters'>(float) </span>maximum distance between two samples to consider one as neighborhood of other</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '0.5' id = 'eps' placeholder = 'positive number >= 0.0' />
+            <br><br>
+            <!-- Min_Samples -->
+            <label>Min_Samples :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of samples in a neighborhood consider as core point</span>
+            <br>
+            <input type="text" class = 'input_text_parameter' value= '5' id = 'min_samples' placeholder = 'positive number >= 1' />
+            <br><br>
+             <!-- Metric -->
+            <label>Metric :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>metric to use to compute distance between sample points</span>
+            <br><br>
+            <input type = 'radio' id = 'euclidean' name = 'metric' value = 'euclidean' checked = 'checked'>
+            <label class = 'radio_button_label' for = 'euclidean'>euclidean</label>
+            <input type = 'radio' id = 'l1' name = 'metric' value = 'l1'>
+            <label class = 'radio_button_label' for = 'l1'>l1</label>
+            <input type = 'radio' id = 'l2' name = 'metric' value = 'l2'>
+            <label class = 'radio_button_label' for = 'l2'>l2</label>
+            <input type = 'radio' id = 'manhattan' name = 'metric' value = 'manhattan'>
+            <label class = 'radio_button_label' for = 'manhattan'>manhattan</label>
+            <input type = 'radio' id = 'cosine' name = 'metric' value = 'cosine'>
+            <label class = 'radio_button_label' for = 'cosine'>cosine</label>
+            <br><br>
+    
+    </form>
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading'>Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model Status-->
+    <div id = 'model_fail_status' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>Model build failed due to Improper Parameters or dataset.</p>
+    </div>
+    <!-- Predicted Classe Plots -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading'>Model Predictions</p>
+        <hr>
+
+        <!-- Classes Plot -->
+        <label>Predicted Classes</label>
+        <br>
+        <img scr = '' id = 'predicted_classes_plot'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
+
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type="text/javascript" src = '../script/dbscan_anomaly.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
+</body>
+</html>

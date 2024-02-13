@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Ma Shan Zheng';
+    src: url('../fonts/mashanzheng-regular-webfont.woff2') format('woff2'),
+         url('../fonts/mashanzheng-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PT Sans Caption';
+    src: url('../ptsanscaption-regular-webfont.woff2') format('woff2'),
+         url('../ptsanscaption-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    src: url('../fonts/sniglet-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sniglet-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.name
+{
+    color: #262F34;
+    text-decoration: underline;
+    text-decoration-color: #F35A4A;
+    text-align: center;
+}
+
+.heading
+{
+    font-size: 2.7rem;
+    font-family: 'Actor', sans-serif;
+    font-weight: bold;
+    color: #78A5A3;
+    margin-top: 1%;
+}
+
+label
+{
+    font-size: 1.9rem;
+    color: #CE5A57;
+    font-family: 'Noto Sans SC', sans-serif;
+    width: 20%;
+}
+
+.description
+{
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #262F34;
+}
+
+.parameters
+{
+    color: #739F3D;
+    font-style: italic;
+    font-size: 1.7rem;
+}
+
+.input_text
+{
+    margin-left: 2%;
+    padding: 1%;
+    outline: none;
+    border:none;
+    font-size: 1.6rem;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: bold;
+    border-bottom: 2px solid #E1B16A;    
+    color: #444C5C;
+    width: 30%;
+}
+
+.file_info
+{
+    color: #F35A4A;
+    font-family: 'Actor', sans-serif;
+}
+
+.parameter_box
+{
+    padding: 1%;
+    border: 1px solid rgb(91, 192, 222);
+    color: rgb(91, 192, 222);
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.input_text_parameter
+{
+    padding: 0.5%;
+    outline: none;
+    border:none;
+    border-bottom: 2px solid rgb(91, 192, 222);
+    font-family: 'Sarabun', sans-serif;
+    color: #444C5C;
+    width: 20%;
+}
+
+.input_text_parameter:focus
+{
+    background-color: rgb(50,50,50);
+    color: white;
+}
+
+input[type = "radio"] 
+{
+  opacity: 0;
+  position: fixed;
+}
+
+.radio_button_label
+{
+    display: inline-block;
+    background-color: rgb(91, 192, 222);
+    padding: 10px;
+    font-family: sans-serif, Arial;
+    font-size: 1.2rem;
+    border: 2px solid black;
+    border-radius: 4px;
+    color: white;
+    width: auto;
+
+}
+
+input[type="radio"]:checked + .radio_button_label 
+{
+    background-color: black;
+    border-color: white;
+    border: 2px solid rgb(91, 192, 222);
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #262F34;
+  border: none;
+  color: #F35A4A;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1.5rem;
+  width: 10%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5%;
+  float: right;
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+
+}
+
+.button:hover{
+  padding-right: 3%;
+}
+
+.dataset_logs
+{
+  font-family: 'Sarabun', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 5%;
+}

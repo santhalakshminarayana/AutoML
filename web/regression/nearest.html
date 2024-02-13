@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+    <link rel="stylesheet" type="text/css" href= '../stylesheets/bootstrap-tagsinput.css'>
+
+</head>
+
+<body class = 'container'>
+    <h1 class = 'name'>K - Nearest Neighbors</h1>
+    <form onsubmit = "return false"> 
+        <p class = 'heading'>Datasets full path</p>
+        <hr>
+       <span>
+            <label>Train set</label>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
+       </span>
+       <span>
+            <label>Test set</label>
+            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'test_file_info'></p>
+       </span>
+
+            <p class = 'heading'>Parameters</p>
+            <hr>
+            <!-- K value -->
+            <label>K-neighbors :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of nearest neighbors</span>
+            <br>
+            <input type="text" value= '5' id = 'n_neighbors' placeholder="positive number > 0" class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+            <!-- Distance Metric -->
+            <label>Distance norm (p) :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>Minkowaski parameter, when p = 1 equivalent to Manhattan, p = 2 equivalent to Euclidean</span>
+            <br>
+            <input type="text" value= '2' id = 'p' placeholder="positive number > 0" class="form-control" data-role = 'tagsinput'/>
+            <br>
+            <br>
+
+    </form>
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model Status-->
+    <div id = 'model_fail_status' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>Model build failed due to Improper Parameters or dataset.</p>
+    </div>
+    <!-- Model -->
+    <div id = 'model' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model</p>
+        <hr>
+        
+        <!-- Model -->
+        <p class = 'dataset_logs' id = 'best_model'>
+        </p>
+    </div>
+    <!-- Evaluation Metrics plots -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model Evaluation</p>
+        <hr>
+        
+        <!-- Training Data evaluation -->
+        <label>Training Data Metrics</label>
+        <br>
+        <img scr = '' id = 'training_data_evaluation'>
+        <br>
+        <!-- Evaluation Data evaluation -->
+        <label>Evaluation Data Metrics</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_evaluation'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
+
+    <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type = "text/javascript" src = '../script/regression_nearest.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
+</body>
+</html>

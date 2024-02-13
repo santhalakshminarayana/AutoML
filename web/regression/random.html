@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel = 'stylesheet' href = '../stylesheets/sub_menu_style.css'>
+    <link rel="stylesheet" type="text/css" href= '../stylesheets/bootstrap-tagsinput.css'>
+
+</head>
+
+<body class = 'container'>
+    <h1 class = 'name'>Random Forest Regressor</h1>
+    <form onsubmit = "return false"> 
+        <p class = 'heading'>Datasets full path</p>
+        <hr>
+       <span>
+            <label>Train set</label>
+            <input type = 'text' class ='input_text' id = 'train_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'train_file_info'></p>
+       </span>
+       <span>
+            <label>Test set</label>
+            <input type = 'text' class = 'input_text' id = 'test_file' placeholder='.csv, .txt only'>
+            <p class = 'file_info' id = 'test_file_info'></p>
+       </span>
+
+            <p class = 'heading'>Parameters</p>
+            <hr>
+            <!-- N estimators -->
+            <label>N-estimators :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>number of trees in forest</span>
+            <br>
+            <input type="text" value= '10' id = 'n_estimators' placeholder = 'positive number >= 1' class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+            <!-- Criterion -->
+            <label>Criterion :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>function to measure quality of split</span>
+            <br><br>
+            <span class = 'parameter_box' name = 'criterion' style = 'background-color: rgb(91, 192, 222);color: white;'>mse</span>
+            <span class = 'parameter_box' name = 'criterion' >mae</span>
+            <br><br>
+            <!-- Max Depth -->
+            <label>Max Depth :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>max depth of a tree, if None expand until all leaves are pure or contain less than minimum samples split</span>
+            <br>
+            <input type="text" value= 'None' id = 'max_depth' placeholder = 'positive number >= 1' class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+            <!-- Min Samples Split -->
+            <label>Min Samples Split :</label>
+            <span class = 'description'><span class = 'parameters'>(int, float) </span>min samples to split a node, if float then ceil(min_samples_split * n_samples)</span>
+            <br>
+            <input type="text" value= '2' id = 'min_samples_split' placeholder = 'positive number >= 2' class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+            <!-- Max Features -->
+            <label>Max Features :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>features to consider for best split if auto then all feautres consider</span>
+            <br><br>
+            <span class = 'parameter_box' name = 'max_features' style = 'background-color: rgb(91, 192, 222);color: white;'>auto</span>
+            <span class = 'parameter_box' name = 'max_features' >log2</span>
+            <span class = 'parameter_box' name = 'max_features' >sqrt</span>
+            <br><br>
+            <!-- Max Leaf Nodes -->
+            <label>Max Leaf Nodes :</label>
+            <span class = 'description'><span class = 'parameters'>(int) </span>max leaf nodes for best reduction of  impurity, if None then unlimited leaf nodes</span>
+            <br>
+            <input type="text" value= 'None' id = 'max_leaf_nodes' placeholder = 'positive number >= 2' class = 'form-control' data-role = 'tagsinput' />
+            <br><br>
+            <!-- Bootstrap -->
+            <label>Bootstrap :</label>
+            <span class = 'description'><span class = 'parameters'>(string) </span>whether to use bootstrap samples or not</span>
+            <br><br>
+            <span class = 'parameter_box' name = 'bootstrap' style = 'background-color: rgb(91, 192, 222);color: white;'>True</span>
+            <span class = 'parameter_box' name = 'bootstrap' >False</span>
+            <br><br>
+            
+    </form>
+
+    <!-- Logs -->
+    <div id = 'logs' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Dataset Pre-processing</p>
+        <hr>
+
+        <!-- Logs of dataset pre-processing -->
+        <label>Dataset Reading Logs</label>
+        <p class = 'dataset_logs' id = 'dataset_logs'>
+        </p>
+        <!-- Dataset processing result -->
+        <label>Dataset Reading Status</label>
+        <p class = 'dataset_logs' id = 'data_processing_result'>
+        </p>
+    </div>
+    <!-- Model Status-->
+    <div id = 'model_fail_status' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>Model build failed due to Improper Parameters or dataset.</p>
+    </div>
+    <!-- Model -->
+    <div id = 'model' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model</p>
+        <hr>
+        
+        <!-- Model -->
+        <p class = 'dataset_logs' id = 'best_model'>
+        </p>
+    </div>
+    <!-- Evaluation Metrics plots -->
+    <div id = 'plots' style = 'display: none'>
+        <p class = 'heading' id = 'dataset_preprocessing_heading'>
+        Model Evaluation</p>
+        <hr>
+        
+        <!-- Training Data evaluation -->
+        <label>Training Data Metrics</label>
+        <br>
+        <img scr = '' id = 'training_data_evaluation'>
+        <br>
+        <!-- Evaluation Data evaluation -->
+        <label>Evaluation Data Metrics</label>
+        <br>
+        <img scr = '' id = 'evaluation_data_evaluation'>
+        <br>
+    </div>
+
+    <!-- Next Button -->
+    <input type = 'button' value = 'Next' class = 'button' id = 'next_button' >
+
+    <script type = "text/javascript" src = "../script/bootstrap-tagsinput.js"></script>
+    <!-- eel.js -->
+    <script type = "text/javascript" src = "../../eel.js"></script>
+    <script type="text/javascript" src = '../script/regression_random.js'></script>
+    <!-- utils.js -->
+    <script type="text/javascript" src = '../script/utils.js'></script>
+    <script type="text/javascript">
+       
+       // change color of parameter box
+       $('.parameter_box').on('click', function(){
+        
+            var bg_blue = 'rgb(91, 192, 222)'
+            var curr_col = $(this).css('background-color');
+            if(curr_col != bg_blue)
+            {
+                $(this).css('background-color', bg_blue);
+                $(this).css('color', 'white');
+            }
+            else
+            {
+                $(this).css('background-color', 'transparent');
+                $(this).css('color', bg_blue);
+            }
+       });
+    </script>
+</body>
+</html>

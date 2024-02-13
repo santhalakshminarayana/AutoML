@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'ma_shan_zhengregular';
+    src: url('mashanzheng-regular-webfont.woff2') format('woff2'),
+         url('mashanzheng-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'pt_sans_captionregular';
+    src: url('ptsanscaption-regular-webfont.woff2') format('woff2'),
+         url('ptsanscaption-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'snigletregular';
+    src: url('sniglet-regular-webfont.woff2') format('woff2'),
+         url('sniglet-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

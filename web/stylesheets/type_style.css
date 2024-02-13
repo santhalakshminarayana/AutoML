@@ -1,0 +1,37 @@
+body
+{
+	width: 90%;
+	left:5%;
+	top:5%;
+	position: relative;
+}
+
+a:link, a:visited
+{
+	color: #262F34;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #F35A4A;
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    src: url('../fonts/sniglet-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sniglet-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h3
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+p
+{
+	font-family: 'Sniglet', cursive;
+}

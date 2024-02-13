@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" 
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ze-hErO - ML for everyone</title>
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
+
+	<!-- UIKit -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+
+	<!-- CSS Link -->
+	<link rel='stylesheet' href='stylesheets/index_style.css'>
+
+</head>
+<body>
+
+	<div class = 'welcome-div ' id = 'welcome'>
+		<img class = 'img-fluid' src = 'images/welcome.png' >
+		<br>
+		<div class = 'welcome-div-msg'>
+			Getting ready for war .....
+			<img class = 'img-fluid' src = 'images/triple_gears.svg' width="15%" height="20%">
+		</div>
+	</div>
+	
+	<div class = 'main' id = 'main'>
+		
+		<!-- Grid -->
+		<div class = ''>
+			<!-- Menu -->
+			<div class = 'menu' id = 'nav_list'>
+				<a class = 'zehero' href = 'pages/home.html' target = 'container'>Ze-hErO AutoML</a>
+				<ul class = 'uk-nav'>
+					<li class = 'uk-parent menu_block' id = 'regressor'>
+						<a href = 'pages/regression.html' target = 'container'>
+							<img src = 'images/regression_icon.png' class = 'sub_menu_image_icon'>Regression</a>
+						<ul class = 'uk-nav-sub sub-menu'>
+							<li>
+								<a href = 'regression/nearest.html' target = 'container'>
+								Nearest Neighbors</a>
+							</li>
+							<li>
+								<a href = 'regression/linear.html' target = 'container'>Linear Regression</a>
+							</li>
+							<li>
+								<a href = 'regression/svr.html' target = 'container'>SVR</a>
+							</li>
+							<li>
+								<a href = 'regression/random.html' target = 'container'>Random Forest Regressor</a>
+							</li>
+						</ul>
+					</li>
+					<li class= 'uk-parent menu_block' id = 'classifier'> 
+						<a href = 'pages/classification.html' target = 'container'>
+							<img src = 'images/classification_icon.png' class = 'sub_menu_image_icon'>Classification</a>
+						<ul class = 'uk-nav-sub sub-menu'>
+							<li>
+								<a href = 'classification/nearest.html' target = 'container'>Nearest Neighbours</a>
+							<li>
+								<a href = 'classification/logistic.html' target = 'container'>Logistic Regression</a>
+							</li>
+							<li>
+								<a href = 'classification/svm.html' target= 'container'>SVM</a>
+							</li>
+							<li>
+								<a href = 'classification/random.html' target = 'container'>Random Forest Classifier</a>
+							</li>
+						</ul>
+					</li>
+					<li class= 'uk-parent menu_block' id = 'clustering'>
+						<a href = 'pages/clustering.html' target = 'container'>
+							<img src = 'images/Clustering_icon.png' class = 'sub_menu_image_icon'>Clustering</a>
+						<ul class = 'uk-nav-sub sub-menu'>
+							<li>
+								<a href = 'clustering/kmeans.html' target = 'container'>K-Means</a>
+							</li>
+							<li>
+								<a href = 'clustering/agglomerative.html' target = 'container'>Agglomerative</a>
+							</li>
+							<li>
+								<a href = 'clustering/dbscan.html' target = 'container'>DBSCAN</a>
+							</li>
+						</ul>
+					</li>
+					<li class = 'uk-parent menu_block' id = 'anomaly'>
+						<a href = 'pages/anomaly.html' target = 'container'>
+							<img src = 'images/anomaly_icon.png' class = 'sub_menu_image_icon'>
+						Anomaly Detection</a>
+						<ul class = 'uk-nav-sub sub-menu'>
+							<li>
+								<a href = 'anomaly/multivariate.html' target= 'container'>Multivariate Gaussian</a>
+							</li>
+							<li>
+								<a href = 'anomaly/dbscan.html' target= 'container'>DBSCAN</a>
+							</li>
+							<li>
+								<a href = 'anomaly/isolation.html' target= 'container'>Isolation Forest</a>
+							</li>
+						</ul>
+					</li>
+					<li class = 'uk-parent menu_block' id = 'dimension'>
+						<a href = 'pages/dimension.html' target = 'container'>
+							<img src = 'images/dimension_icon.png' class = 'sub_menu_image_icon'>Dimension Reduction</a>
+						<ul class = 'uk-nav-sub sub-menu'>
+							<li>
+								<a href = 'dimension/pca.html' target= 'container'>PCA</a>
+							</li>
+							<li>
+								<a href = 'dimension/tsne.html' target= 'container'>TSNE</a>
+							</li>
+							<li>
+								<a href = 'dimension/svd.html' target= 'container'>SVD</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Content -->
+			<div class = 'content'>
+				<iframe src="pages/home.html" class = 'content_frame' name = 'container'></iframe>
+			</div>
+
+		</div>
+
+	</div>
+
+    <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+		crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+		crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+		crossorigin="anonymous"></script>
+	<!-- eel.js -->
+    <script type = "text/javascript" src = "../eel.js"></script>
+	<script src = 'script/script.js'>
+	</script>
+
+</body>
+
+</html>
