@@ -4,7 +4,7 @@ category-encoders==2.2.2
 cycler==0.10.0
 Eel==0.12.3
 future==0.18.2
-gevent==20.5.0
+gevent==23.9.0
 gevent-websocket==0.10.1
 greenlet==0.4.15
 joblib==0.15.1
